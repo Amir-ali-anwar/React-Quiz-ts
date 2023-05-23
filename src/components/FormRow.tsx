@@ -19,7 +19,7 @@ const FormRow = ({
     value,
     name}: Props) => {
   return (
-    <div className="form-row">
+    <div className="form-control">
     <label htmlFor={labelText} className={labelClass}>
       {labelText}
     </label>

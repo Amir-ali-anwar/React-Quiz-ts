@@ -1,7 +1,8 @@
+import SetupForm from "./components/SetupForm"
 function App() {
   return (
     <>
-      adfsaf
+      <SetupForm />
     </>
   )
 }

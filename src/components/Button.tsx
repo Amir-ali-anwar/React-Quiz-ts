@@ -1,14 +1,15 @@
 import React from "react";
 
-type Props = {
-  key: React.Key;
-  type: 'submit' | 'reset';
+type ButtonProps = {
+  key?: React.Key;
+  type?: 'submit' | 'reset';
   className: string;
-  disabled:boolean,
+  disabled?:boolean,
+  children:React.ReactNode,
   handleChange:(e:React.MouseEvent<HTMLButtonElement>) => void
 };
 
-const Button = ({key,type,className,handleChange,disabled}: Props) => {
+const Button:React.FC<ButtonProps> = ({key,type='submit',className,handleChange,disabled,children}) => {
   return (
     <button
       key={key}
@@ -16,7 +17,7 @@ const Button = ({key,type,className,handleChange,disabled}: Props) => {
       className={className}
       onClick={handleChange}
       disabled={disabled}
-    ></button>
+    >{children}</button>
   );
 };
 

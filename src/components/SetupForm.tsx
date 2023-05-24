@@ -1,14 +1,14 @@
 import FormRow from "./FormRow";
 import Button from "./Button";
-const SetupForm = () => {
-  const handleChange = () => {
-    console.log("data");
-  };
-  const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
-    e.preventDefault()
-    console.log('submitted');
-    
-  }
+type SetupFormProps={
+  amount:number,
+  category:string,
+  difficulty:string,
+  handleChange:(e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit:React.MouseEventHandler<HTMLButtonElement>
+}
+const SetupForm:React.FC<SetupFormProps> = ({amount,category,difficulty,handleChange,handleSubmit}) => {
+
   return (
     <main>
       <section className="quiz quiz-small">
@@ -19,6 +19,8 @@ const SetupForm = () => {
             handleChange={handleChange}
             type="number"
             className="form-input"
+            value={amount}
+            name="amount"
           />
           <div className="form-control">
             <label htmlFor="category">category</label>
@@ -27,6 +29,7 @@ const SetupForm = () => {
               id="category"
               className="form-input"
               onChange={handleChange}
+              value={category}
             >
               <option value="sports">sports</option>
               <option value="history">history</option>
@@ -39,6 +42,7 @@ const SetupForm = () => {
               name='difficulty'
               id='difficulty'
               className='form-input'
+              value={difficulty}
               onChange={handleChange}
             >
               <option value='easy'>easy</option>
@@ -46,7 +50,8 @@ const SetupForm = () => {
               <option value='hard'>hard</option>
             </select>
           </div>
-          <Button className='submit-btn' handleChange={handleChange}>start</Button>
+          <button className='submit-btn' onClick={handleSubmit}>start</button>
+          {/* <Button className='submit-btn' handleChange={handleChange}>start</Button> */}
         </form>
       </section>
     </main>

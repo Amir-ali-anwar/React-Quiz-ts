@@ -51,7 +51,7 @@ function App() {
      return <Loading /> 
   }
   if(waiting){
-    return  <SetupForm {...quiz} handleChange={handleChange} handleSubmit={handleSubmit}/>
+    return  <SetupForm {...quiz} handleChange={handleChange}/>
   }
   return (
     <>

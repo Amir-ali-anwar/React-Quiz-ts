@@ -1,18 +1,20 @@
 import FormRow from "./FormRow";
 import Button from "./Button";
 type SetupFormProps={
-  amount:number,
-  category:string,
-  difficulty:string,
-  handleChange:(e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit:() => void;
+  amount?:number,
+  category?:string,
+  difficulty?:string,
+  handleSubmit?:() => void;
+  handleChange?:()=>void
 }
-const SetupForm:React.FC<SetupFormProps> = ({amount,category,difficulty,handleChange,handleSubmit}) => {
+const SetupForm:React.FC<SetupFormProps> = ({amount,category,difficulty}) => {
+const handleChange=()=>{
 
+}
   return (
     <main>
       <section className="quiz quiz-small">
-        <form className="setup-form">
+        <form className="setup-form" onSubmit={(e)=>e.preventDefault()}>
           <h2>setup quiz</h2>
           <FormRow
             labelText="number of questions"
@@ -50,7 +52,6 @@ const SetupForm:React.FC<SetupFormProps> = ({amount,category,difficulty,handleCh
               <option value='hard'>hard</option>
             </select>
           </div>
-          {/* <button className='submit-btn' onClick={handleSubmit}>start</button> */}
           <Button className='submit-btn' handleChange={handleChange}>start</Button>
         </form>
       </section>

@@ -1,23 +1,13 @@
-import React from "react";
+  import React,{FC} from 'react'
+  
+  interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
+    disabled?:boolean,
+  }
+  
+  const Button:FC<ButtonProps> = ({disabled,className,children}) => {
+    return (
+     <button className={className} disabled={disabled}>{children}</button>
+    )
+  }
 
-type Props = {
-  key: React.Key;
-  type: 'submit' | 'reset';
-  className: string;
-  disabled:boolean,
-  handleChange:(e:React.MouseEvent<HTMLButtonElement>| React.MouseEventHandler<HTMLButtonElement>) => void
-};
-
-const Button = ({key,type,className,handleChange,disabled}: Props) => {
-  return (
-    <button
-      key={key}
-      type={type}
-      className={className}
-      onClick={handleChange}
-      disabled={disabled}
-    ></button>
-  );
-};
-
-export default Button;
+  export default Button;

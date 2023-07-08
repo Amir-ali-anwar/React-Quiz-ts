@@ -5,14 +5,14 @@ type SetupFormProps={
   category:string,
   difficulty:string,
   handleChange:(e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit:React.MouseEventHandler<HTMLButtonElement>
+  handleSubmit:() => void;
 }
 const SetupForm:React.FC<SetupFormProps> = ({amount,category,difficulty,handleChange,handleSubmit}) => {
 
   return (
     <main>
       <section className="quiz quiz-small">
-        <form className="setup-form" onSubmit={handleSubmit}>
+        <form className="setup-form">
           <h2>setup quiz</h2>
           <FormRow
             labelText="number of questions"
@@ -50,8 +50,8 @@ const SetupForm:React.FC<SetupFormProps> = ({amount,category,difficulty,handleCh
               <option value='hard'>hard</option>
             </select>
           </div>
-          <button className='submit-btn' onClick={handleSubmit}>start</button>
-          {/* <Button className='submit-btn' handleChange={handleChange}>start</Button> */}
+          {/* <button className='submit-btn' onClick={handleSubmit}>start</button> */}
+          <Button className='submit-btn' handleChange={handleChange}>start</Button>
         </form>
       </section>
     </main>

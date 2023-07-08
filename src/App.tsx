@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SetupForm from "./components/SetupForm";
 import Loading from "./components/Loading";
+import axios from "axios";
 function App() {
   const [waiting, SetWaiting] = useState<boolean>(true);
   const [loading, SetLoading] = useState<boolean>(false);
@@ -13,6 +14,27 @@ function App() {
     category: 'sports',
     difficulty: 'easy',
   })
+  const fetchQuestions= async (url:string)=>{
+    try { 
+        SetLoading(true)
+        const response= await axios(url);
+        if(response){
+          const data = response.data.results
+          if(data.length>0){
+            SetQuestions(data)
+            SetWaiting(false)
+            SetLoading(false)
+          }
+        }else{
+          SetWaiting(true)
+          SetError(true)
+        }
+
+    } catch (error) { 
+      SetWaiting(true)
+      SetError(true)
+    }
+  }
   const handleChange=(e:React.ChangeEvent<HTMLFormElement>)=>{
     const name= e.target.name
     const value= e.target.value
